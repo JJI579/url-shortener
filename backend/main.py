@@ -39,7 +39,6 @@ class LinkProvided(BaseModel):
     url: HttpUrl
     custom: str | None = None
 
-
 letterChoices = list("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
 letterChoices.extend([x.lower() for x in letterChoices])
 
@@ -51,7 +50,6 @@ def generateRandomCode() -> str:
 @linkRouter.post('/shorten')
 async def createRoute(data: LinkProvided, request: Request, session: AsyncSession = Depends(get_session) ):
     url = str(data.url)
-
     potentialResp = await session.execute(select(Link).where(Link.linkURL == url))
     potentialURL = potentialResp.scalar_one_or_none()
     if potentialURL:

@@ -3,6 +3,7 @@ import { getImpliedNodeFormatForFile } from 'typescript';
 import { ref } from 'vue';
 import CollapsibleContainer from './CollapsibleContainer.vue';
 import InputModel from './InputModel.vue';
+import useAlertStore from './AlertStore';
 
 const inputField = ref("");
 const hasTriedSubmit = ref(false);
@@ -29,15 +30,26 @@ async function handleSubmit() {
     }
 
     console.log(dataBody)
-
     const resp = await fetch(`${API_URL}/link/shorten`, {
-        method: "POST",
-        body: JSON.stringify(dataBody),
-        headers: { "Content-Type": "application/json" },
-    });
+            method: "POST",
+            body: JSON.stringify(dataBody),
+            headers: { "Content-Type": "application/json" },
+        });
 
-    const content = await resp.json();
-    response.value = content['url'];
+    if (resp.ok) {
+        const content = await resp.json();
+        useAlertStore().alert({
+            text: "URL shortened successfully!",
+            type: "success"
+        });
+        response.value = content['url'];
+    } else {
+        useAlertStore().alert({
+            text: "Error occurred while shortening URL ",
+            type: "error"
+        });
+        return;
+    }
 }
 
 
@@ -51,6 +63,10 @@ function copyToClipboard() {
         "pi-check": true,
         "pi-copy": false
     }
+    useAlertStore().alert({
+        text: "Copied to clipboard!",
+        type: "success"
+    });
     setTimeout(() => {
         icon.value = {
         "pi-check": false,

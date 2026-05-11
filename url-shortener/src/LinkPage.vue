@@ -75,6 +75,12 @@ function copyToClipboard() {
     }, 500);
 }
 
+function pasteClipboard() {
+    navigator.clipboard.readText().then(text => {
+        inputField.value = text;
+    });
+}
+
 // Advanced Settings
 const customLinkCode = ref("");
 
@@ -85,7 +91,10 @@ const customLinkCode = ref("");
         <div class="center__link link">
             <h1>Enter link to shorten</h1>
             <div class="link__field">
-                <input type="text" placeholder="Link here..." class="link__input" :class="{'link__input--invalid': hasTriedSubmit && inputField != ''}" v-model="inputField">
+                <div class="link__inputs">
+                    <input type="text" placeholder="Link here..." class="link__input" :class="{'link__input--invalid': hasTriedSubmit && inputField != ''}" v-model="inputField">
+                    <button class="link__paste" @click="pasteClipboard"><i class="pi pi-clipboard"></i></button>
+                </div>
                 <button class="link__submit" @click="handleSubmit">Submit</button>
             </div>
             <div class="link__response" v-if="response.trim().length > 0">
@@ -135,8 +144,19 @@ const customLinkCode = ref("");
         gap: 10px;
     }
 
+    &__inputs {
+        width: 100%;
+        display: flex;
+        gap: 5px;
+    }
+
+    &__paste {
+        aspect-ratio: 1/1;
+        font-size: large;
+    }
     &__input {
         height: 2.5rem;
+        flex: 1;
 
     }
 

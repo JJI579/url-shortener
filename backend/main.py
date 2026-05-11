@@ -50,11 +50,7 @@ def generateRandomCode() -> str:
 
 @linkRouter.post('/shorten')
 async def createRoute(data: LinkProvided, request: Request, session: AsyncSession = Depends(get_session) ):
-    print(data.custom)
-    # already validated it is a url
-    # save to database
     url = str(data.url)
-    
 
     potentialResp = await session.execute(select(Link).where(Link.linkURL == url))
     potentialURL = potentialResp.scalar_one_or_none()
@@ -63,6 +59,7 @@ async def createRoute(data: LinkProvided, request: Request, session: AsyncSessio
             "url": f"{request.base_url}link/{potentialURL.linkCode}"
         }
 
+    # Filter between custom url or random url
     code = data.custom if data.custom else generateRandomCode()
     
     while True:

@@ -1,11 +1,14 @@
 <script lang="ts" setup>
 import { getImpliedNodeFormatForFile } from 'typescript';
 import { ref } from 'vue';
+import CollapsibleContainer from './CollapsibleContainer.vue';
+import InputModel from './InputModel.vue';
 
 const inputField = ref("");
 const hasTriedSubmit = ref(false);
 const response = ref("");
 const API_URL = import.meta.env.VITE_API_URL;
+
 
 
 async function handleSubmit() {
@@ -17,12 +20,19 @@ async function handleSubmit() {
         hasTriedSubmit.value = true;
         return;
     }
+    const dataBody: { url: string; custom?: string } = {
+        url: inputField.value,
+    };
+    
+    if (customLinkCode.value.trim().length > 0) {
+        dataBody['custom'] = customLinkCode.value.trim().toUpperCase()
+    }
+
+    console.log(dataBody)
 
     const resp = await fetch(`${API_URL}/link/shorten`, {
         method: "POST",
-        body: JSON.stringify({ 
-            url: inputField.value
-        }),
+        body: JSON.stringify(dataBody),
         headers: { "Content-Type": "application/json" },
     });
 
@@ -48,6 +58,10 @@ function copyToClipboard() {
     }
     }, 500);
 }
+
+// Advanced Settings
+const customLinkCode = ref("");
+
 </script>
 
 <template>
@@ -66,6 +80,13 @@ function copyToClipboard() {
             </div>
             
         </div>
+
+        <CollapsibleContainer :text="'Advanced Settings'">
+            <div class="inputs">
+                <InputModel :title="'Custom Link'" v-model:input-model="customLinkCode" :max-length="6" />
+            </div>
+        </CollapsibleContainer>
+
     </div>
 
 
@@ -78,6 +99,9 @@ function copyToClipboard() {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    flex-direction: column;
+    gap: 1rem;
 
     &__link {
         padding: 1rem;

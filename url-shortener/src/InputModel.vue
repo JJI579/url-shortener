@@ -1,9 +1,18 @@
 <script lang="ts" setup>
+import type { PropType } from 'vue';
 
+
+
+type InputType = "text" | "code" | "login";
 defineProps({
     title: {
         type: String,
         required: true
+    },
+    type: {
+        type: String as PropType<InputType>,
+        required: false,
+        default: "text"
     },
     maxLength: {
         type: Number,
@@ -23,24 +32,40 @@ const inputModel = defineModel<string>("inputModel", {
         <div class="input__title">
             {{title}}
         </div>
-        <input type="text" class="input__inp" v-model="inputModel" :maxlength="maxLength">
+        <input type="text" class="input__inp" v-model="inputModel" :maxlength="maxLength" :class="'input--' + type">
     </div>
 </template> 
 
 <style lang="scss" scoped>
 .input {
+
+
+    
+
     &__title {
         font-weight: bold;
     }
 
     &__inp {
-        text-transform: uppercase;
         height: 2.5rem;
+        
+    }
+
+    &--login {
+        
+        
+    }
+    &--text {
+        // make it look nice
+    }
+
+    &--code {
+        width: 30%;
+        font-weight: bold;
         font-size: large;
         text-align: center;
         letter-spacing: 10px;
-        width: 30%;
-        font-weight: bold;
+        text-transform: uppercase;
     }
 }
 </style>

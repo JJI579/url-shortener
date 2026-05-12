@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { getImpliedNodeFormatForFile } from 'typescript';
-import { ref } from 'vue';
-import CollapsibleContainer from './CollapsibleContainer.vue';
+import { onMounted, ref } from 'vue';
+import CollapsibleContainer from './Components/CollapsibleContainer.vue';
 import InputModel from './InputModel.vue';
 import useAlertStore from './AlertStore';
 
@@ -10,7 +10,9 @@ const hasTriedSubmit = ref(false);
 const response = ref("");
 const API_URL = import.meta.env.VITE_API_URL;
 
-
+onMounted(() => {
+    
+})
 
 async function handleSubmit() {
     // make sure not empty

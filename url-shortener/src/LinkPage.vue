@@ -2,8 +2,9 @@
 import { getImpliedNodeFormatForFile } from 'typescript';
 import { onMounted, ref } from 'vue';
 import CollapsibleContainer from './Components/CollapsibleContainer.vue';
-import InputModel from './InputModel.vue';
+import InputModel from './Components/InputModel.vue';
 import useAlertStore from './AlertStore';
+import RadioModel from './Components/RadioModel.vue';
 
 const inputField = ref("");
 const hasTriedSubmit = ref(false);
@@ -85,6 +86,7 @@ function pasteClipboard() {
 
 // Advanced Settings
 const customLinkCode = ref("");
+const isPrivate = ref(false);
 
 </script>
 
@@ -99,6 +101,7 @@ const customLinkCode = ref("");
                 </div>
                 <button class="link__submit" @click="handleSubmit">Submit</button>
             </div>
+            <br>
             <div class="link__response" v-if="response.trim().length > 0">
                 <a class="link__clickable" :href="response">{{ response }}</a>
                 <div class="link__icon">
@@ -111,6 +114,7 @@ const customLinkCode = ref("");
         <CollapsibleContainer :text="'Advanced Settings'">
             <div class="inputs">
                 <InputModel :title="'Custom Link'" v-model:input-model="customLinkCode" :max-length="6" type="code"/>
+                <RadioModel title="Private" v-model:input-model="isPrivate" />
             </div>
         </CollapsibleContainer>
 
@@ -163,7 +167,7 @@ const customLinkCode = ref("");
     }
 
     &__submit {
-        width: 80%;
+        width: 70%;
         margin: auto;
         height: 2.5rem;
         border-radius: 10px;

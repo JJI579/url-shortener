@@ -110,7 +110,7 @@ const customLinkCode = ref("");
 
         <CollapsibleContainer :text="'Advanced Settings'">
             <div class="inputs">
-                <InputModel :title="'Custom Link'" v-model:input-model="customLinkCode" :max-length="6" />
+                <InputModel :title="'Custom Link'" v-model:input-model="customLinkCode" :max-length="6" type="code"/>
             </div>
         </CollapsibleContainer>
 

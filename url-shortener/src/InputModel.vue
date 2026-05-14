@@ -40,8 +40,6 @@ const inputModel = defineModel<string>("inputModel", {
 .input {
 
 
-    
-
     &__title {
         font-weight: bold;
     }

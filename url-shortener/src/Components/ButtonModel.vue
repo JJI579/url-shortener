@@ -2,7 +2,7 @@
 import type { PropType } from 'vue';
 
 
-type ButtonType = "primary" | "secondary" | "danger";
+type ButtonType = "primary" | "secondary" | "danger" | "active" | "header" | "header-admin";
 
 defineProps({
     title: {
@@ -30,19 +30,34 @@ defineEmits(["click"])
 
 .button {
     padding: 0.5rem 1rem;
+    
     border-radius: 5px;
     font-weight: bold;
     border: none;
     cursor: pointer;
+    color: white;
 
     &--primary {
         background-color: #007bff;
-        color: white;
+        
     }
 
     &--secondary {
         background-color: #6c757d;
-        color: white;
+        
+    }
+
+
+    &--header {
+        background-color: #8c97a1;
+        transition: 0.2s ease all;
+        &:hover {
+            background-color: grey;
+        }
+    }
+
+    &--active {
+        background-color: #696f75;
     }
 
     &--danger {

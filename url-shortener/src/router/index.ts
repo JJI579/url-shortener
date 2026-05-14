@@ -1,3 +1,6 @@
+
+import AdminPage from '@/AdminPage.vue'
+import DashboardPage from '@/DashboardPage.vue'
 import LinkPage from '@/LinkPage.vue'
 import LoginPage from '@/LoginPage.vue'
 import SettingsPage from '@/SettingsPage.vue'
@@ -8,7 +11,12 @@ const router = createRouter({
   routes: [
     {
       path: "/",
-      name: "index",
+      name: "home",
+      component: DashboardPage
+    },
+    {
+      path: "/shorten",
+      name: "shorten",
       component: LinkPage
     },
     {
@@ -20,6 +28,11 @@ const router = createRouter({
       path: "/login",
       name: "login",
       component: LoginPage
+    },
+    {
+      path: "/admin",
+      name: "admin",
+      component: AdminPage
     }
   ],
 })

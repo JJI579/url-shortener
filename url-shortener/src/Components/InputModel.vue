@@ -38,14 +38,18 @@ const inputModel = defineModel<string | boolean>("inputModel", {
 
 <style lang="scss" scoped>
 .input {
-
-
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    
+    width: 30%;
     &__title {
         font-weight: bold;
     }
 
     &__inp {
         height: 2.5rem;
+        // width: 100%;
         
     }
 
@@ -56,15 +60,15 @@ const inputModel = defineModel<string | boolean>("inputModel", {
     }
 
     &--login {
-        
-        
+
     }
     &--text {
         // make it look nice
+        
     }
 
     &--code {
-        width: 30%;
+        
         font-weight: bold;
         font-size: large;
         text-align: center;

@@ -63,16 +63,16 @@ function toggleContainer() {
 </template>
 
 <style lang="scss" scoped>
+
+@use "@/variables.scss" as *;
 .icon {
     transition: 0.24s ease all;
 }
 
 .container {
-    border: 1px solid #ccc;
     border-radius: 8px;
     width: 40%;
     overflow: hidden;
-    background: #f3f3f3;
 
     &__collapsible {
         background-color: #dadada;

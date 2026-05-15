@@ -47,7 +47,6 @@ defineEmits(["click"])
         
     }
 
-
     &--header {
         background-color: #8c97a1;
         transition: 0.2s ease all;

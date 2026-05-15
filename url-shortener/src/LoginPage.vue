@@ -22,11 +22,16 @@ async function handleLogin() {
 
 <template>
     <div class="center">
-        <div class="form">
+        <div class="form container">
             <div class="form__wrapper">
-                <InputModel title="Username" v-model:input-model="username" type="login"/>
-                <InputModel title="Password" v-model:input-model="password" type="login" />
-                <ButtonModel type="primary" title="Login" @click="handleLogin" class="form__button"/>
+                <h1 class="form__title">QuickSwitcher</h1>
+                <p class="form__text">Enter your Admin Credentials to use the Admin Panel.</p>
+                <div class="inputs">
+                    <InputModel title="Username" v-model:input-model="username" type="login" class="form__button"/>
+                    <InputModel title="Password" v-model:input-model="password" type="login" class="form__button"/>
+                    <ButtonModel type="primary" title="Login" @click="handleLogin" class="form__button"/>
+                </div>
+                
             </div>
         </div>
     </div>
@@ -34,8 +39,11 @@ async function handleLogin() {
 </template> 
 
 <style lang="scss" scoped>
+
+@use "@/variables.scss" as *;
+
 .center {
-    height: 100%;
+    height: 80%;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -43,12 +51,14 @@ async function handleLogin() {
 }
 
 .form {
+
     width: 30%;
     padding: 1rem;
-    max-height: 60%;
+    max-height: 80%;
     aspect-ratio: 0.5/1;
     margin: auto;
-    border: 1px solid black;
+    
+    border-radius: 10px;
     
 
     &__wrapper {
@@ -61,8 +71,35 @@ async function handleLogin() {
         margin: auto;
     }
 
+    &__title {
+        margin: 0;
+        margin-top: 1rem;
+    }
+
+    &__text {
+        text-align: center;
+        margin: 0;
+    }
+    .inputs {
+        width: 100%;
+        margin-top: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    &__button:last-child {
+        margin-top: 1rem;
+        height: 2.5rem;
+        width: 80%;
+    }
     &__button {
-        width: 50%;
+        width: 100%;
+        
+        & .input__inp {
+            width: 100%;
+        }
     }
 
     

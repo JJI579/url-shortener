@@ -12,32 +12,32 @@ const response = ref("");
 const API_URL = import.meta.env.VITE_API_URL;
 
 onMounted(() => {
-    
+
 })
 
 async function handleSubmit() {
     // make sure not empty
     console.log("clicked")
-    
+
     if (inputField.value.trim().length == 0) {
-        
+
         hasTriedSubmit.value = true;
         return;
     }
     const dataBody: { url: string; custom?: string } = {
         url: inputField.value,
     };
-    
+
     if (customLinkCode.value.trim().length > 0) {
         dataBody['custom'] = customLinkCode.value.trim().toUpperCase()
     }
 
     console.log(dataBody)
     const resp = await fetch(`${API_URL}/link/shorten`, {
-            method: "POST",
-            body: JSON.stringify(dataBody),
-            headers: { "Content-Type": "application/json" },
-        });
+        method: "POST",
+        body: JSON.stringify(dataBody),
+        headers: { "Content-Type": "application/json" },
+    });
 
     if (resp.ok) {
         const content = await resp.json();
@@ -72,9 +72,9 @@ function copyToClipboard() {
     });
     setTimeout(() => {
         icon.value = {
-        "pi-check": false,
-        "pi-copy": true
-    }
+            "pi-check": false,
+            "pi-copy": true
+        }
     }, 500);
 }
 
@@ -93,10 +93,11 @@ const isPrivate = ref(false);
 <template>
     <div class="center">
         <div class="center__link link">
-            <h1>Enter link to shorten</h1>
+            <h1>Enter Link to Shorten</h1>
             <div class="link__field">
                 <div class="link__inputs">
-                    <input type="text" placeholder="Link here..." class="link__input" :class="{'link__input--invalid': hasTriedSubmit && inputField != ''}" v-model="inputField">
+                    <input type="text" placeholder="Link here..." class="link__input"
+                        :class="{ 'link__input--invalid': hasTriedSubmit && inputField != '' }" v-model="inputField">
                     <button class="link__paste" @click="pasteClipboard"><i class="pi pi-clipboard"></i></button>
                 </div>
                 <button class="link__submit" @click="handleSubmit">Submit</button>
@@ -108,13 +109,16 @@ const isPrivate = ref(false);
                     <i class="pi" :class="icon" @click="copyToClipboard"></i>
                 </div>
             </div>
-            
+
         </div>
 
         <CollapsibleContainer :text="'Advanced Settings'">
             <div class="inputs">
-                <InputModel :title="'Custom Link'" v-model:input-model="customLinkCode" :max-length="6" type="code"/>
+
+                <InputModel :title="'Custom Link'" v-model:input-model="customLinkCode" :max-length="6" type="code" />
+
                 <RadioModel title="Private" v-model:input-model="isPrivate" />
+
             </div>
         </CollapsibleContainer>
 
@@ -124,6 +128,8 @@ const isPrivate = ref(false);
 </template>
 
 <style lang="scss" scoped>
+
+@use "@/variables.scss" as *;
 .center {
 
 
@@ -160,6 +166,7 @@ const isPrivate = ref(false);
         aspect-ratio: 1/1;
         font-size: large;
     }
+
     &__input {
         height: 2.5rem;
         flex: 1;
@@ -198,12 +205,13 @@ const isPrivate = ref(false);
         display: flex;
         gap: 1rem;
     }
-    &__clickable {
 
-    }
-
-    
+    &__clickable {}
 }
 
-
+.inputs {
+    display: flex;
+    gap: 1rem;
+    flex-basis: 50%;
+}
 </style>

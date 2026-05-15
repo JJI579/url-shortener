@@ -25,7 +25,7 @@ async function handleLogin() {
         <div class="form container">
             <div class="form__wrapper">
                 <h1 class="form__title">QuickSwitcher</h1>
-                <p class="form__text">Enter your Admin Credentials to use the Admin Panel.</p>
+                <p class="form__text">Enter your Credentials to use the Admin Panel.</p>
                 <div class="inputs">
                     <InputModel title="Username" v-model:input-model="username" type="login" class="form__button"/>
                     <InputModel title="Password" v-model:input-model="password" type="login" class="form__button"/>

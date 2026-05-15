@@ -1,11 +1,12 @@
 <script lang="ts" setup>
+import ButtonModel from '@/Components/Templates/ButtonModel.vue';
+import InputModel from '@/Components/Templates/InputModel.vue';
+import { useUserStore } from '@/stores/UserStore';
 import { ref } from 'vue';
-import InputModel from './Components/Templates/InputModel.vue';
-import ButtonModel from './Components/Templates/ButtonModel.vue';
-import { useUserStore } from './stores/counter';
-import router from './router';
+import { useRouter } from 'vue-router';
 
 const userStore = useUserStore();
+const router = useRouter();
 
 const username = ref("");
 const password = ref("");

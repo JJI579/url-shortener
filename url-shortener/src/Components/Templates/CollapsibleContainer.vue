@@ -64,7 +64,8 @@ function toggleContainer() {
 
 <style lang="scss" scoped>
 
-@use "@/variables.scss" as *;
+@use "@/scss/variables.scss" as *;
+
 .icon {
     transition: 0.24s ease all;
 }

@@ -41,7 +41,8 @@ async function handleLogin() {
 
 <style lang="scss" scoped>
 
-@use "@/variables.scss" as *;
+@use "@/scss/variables.scss" as *;
+
 
 .center {
     height: 80%;

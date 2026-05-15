@@ -1,15 +1,18 @@
 <script lang="ts" setup>
 import { useRoute } from 'vue-router';
-import ButtonModel from './Components/Templates/ButtonModel.vue';
-import { onMounted, ref, watch } from 'vue';
-
+import {  ref, watch } from 'vue';
+import ButtonModel from './Templates/ButtonModel.vue';
+import { useTitle } from '@vueuse/core';
 
 const route = useRoute();
+const title = useTitle();
 
 const routeName = ref("");
 
 watch(route, (newRoute) => {
     routeName.value = newRoute.name as string;
+    title.value = newRoute.name as string;
+    
 });
 </script>
 

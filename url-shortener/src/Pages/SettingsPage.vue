@@ -1,5 +1,7 @@
 <script lang="ts" setup>
-import ButtonModel from './Components/Templates/ButtonModel.vue';
+import ButtonModel from '@/Components/Templates/ButtonModel.vue';
+
+
 
 async function deleteAllLinks() {
     await fetch(`${import.meta.env.VITE_API_URL}/link/delete-all`, {

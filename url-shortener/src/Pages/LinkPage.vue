@@ -1,26 +1,18 @@
 <script lang="ts" setup>
-import { getImpliedNodeFormatForFile } from 'typescript';
-import { onMounted, ref } from 'vue';
-import CollapsibleContainer from './Components/Templates/CollapsibleContainer.vue';
-import InputModel from './Components/Templates/InputModel.vue';
-import useAlertStore from './stores/AlertStore';
-import RadioModel from './Components/Templates/RadioModel.vue';
+import { ref } from 'vue';
+import RadioModel from '@/Components/Templates/RadioModel.vue';
+import useAlertStore from '@/stores/AlertStore';
+import InputModel from '@/Components/Templates/InputModel.vue';
+import CollapsibleContainer from '@/Components/Templates/CollapsibleContainer.vue';
 
 const inputField = ref("");
+// TODO: make it so its highlighted the link if failed to provide correct details.
 const hasTriedSubmit = ref(false);
 const response = ref("");
 const API_URL = import.meta.env.VITE_API_URL;
 
-onMounted(() => {
-
-})
-
 async function handleSubmit() {
-    // make sure not empty
-    console.log("clicked")
-
     if (inputField.value.trim().length == 0) {
-
         hasTriedSubmit.value = true;
         return;
     }
@@ -129,7 +121,8 @@ const isPrivate = ref(false);
 
 <style lang="scss" scoped>
 
-@use "@/variables.scss" as *;
+@use "@/scss/variables.scss" as *;
+
 .center {
 
 

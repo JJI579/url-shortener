@@ -7,7 +7,7 @@ from contextlib import asynccontextmanager
 # database
 from database import init_db, init_db_sync, close_db, get_session, AsyncSession
 from models import Link
-from sqlmodel import select, update
+from sqlmodel import select
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):

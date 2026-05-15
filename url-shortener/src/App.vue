@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import Alert from './Alert.vue';
-import Header from './Header.vue';
+import Alert from './Components/Alert.vue';
+import Header from './Components/Header.vue';
+
+
 
 </script>
 

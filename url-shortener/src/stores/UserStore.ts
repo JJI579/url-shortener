@@ -1,15 +1,5 @@
-import { ref, computed } from 'vue'
-import { defineStore } from 'pinia'
-
-export const useCounterStore = defineStore('counter', () => {
-	const count = ref(0)
-	const doubleCount = computed(() => count.value * 2)
-	function increment() {
-		count.value++
-	}
-
-	return { count, doubleCount, increment }
-})
+import { defineStore } from "pinia";
+import { ref } from "vue";
 
 export const useUserStore = defineStore('user', () => {
 	const userData = ref({});
@@ -33,6 +23,7 @@ export const useUserStore = defineStore('user', () => {
 			throw new Error('Login failed\n' + await resp.text());
 		}
 	}
+    
 	function getLoggedIn() {
 		return isLoggedIn.value
 	}

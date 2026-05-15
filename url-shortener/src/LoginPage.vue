@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
-import InputModel from './Components/InputModel.vue';
-import ButtonModel from './Components/ButtonModel.vue';
+import InputModel from './Components/Templates/InputModel.vue';
+import ButtonModel from './Components/Templates/ButtonModel.vue';
 import { useUserStore } from './stores/counter';
 import router from './router';
 

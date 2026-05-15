@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { useRoute } from 'vue-router';
-import ButtonModel from './Components/ButtonModel.vue';
+import ButtonModel from './Components/Templates/ButtonModel.vue';
 import { onMounted, ref, watch } from 'vue';
 
 

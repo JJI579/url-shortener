@@ -1,10 +1,10 @@
 <script lang="ts" setup>
 import { getImpliedNodeFormatForFile } from 'typescript';
 import { onMounted, ref } from 'vue';
-import CollapsibleContainer from './Components/CollapsibleContainer.vue';
-import InputModel from './Components/InputModel.vue';
-import useAlertStore from './AlertStore';
-import RadioModel from './Components/RadioModel.vue';
+import CollapsibleContainer from './Components/Templates/CollapsibleContainer.vue';
+import InputModel from './Components/Templates/InputModel.vue';
+import useAlertStore from './stores/AlertStore';
+import RadioModel from './Components/Templates/RadioModel.vue';
 
 const inputField = ref("");
 const hasTriedSubmit = ref(false);

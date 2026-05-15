@@ -15,7 +15,9 @@ watch(route, (newRoute) => {
 
 <template>
     <div class="header">
-        <p class="header__title">QuickSwitcher</p>
+        <RouterLink :to="{'name': 'home'}" class="header__title">
+            <p class="header__title">QuickSwitcher</p>
+        </RouterLink>
         <div class="header__end links">
             <RouterLink :to="{'name': 'home'}">
                 <ButtonModel  title="Home" class="links__button" :type="routeName === 'home' ? 'active' : 'header'"/>
@@ -42,6 +44,8 @@ watch(route, (newRoute) => {
     &__title {
         font-size: 1.5rem;
         font-weight: bold;
+        color: black;
+        text-decoration: none;
         
     }
     &__end {

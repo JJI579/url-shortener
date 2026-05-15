@@ -173,6 +173,19 @@ const isPrivate = ref(false);
 
     }
 
+    &__paste {
+        background-color: $secondary-background-colour;
+        outline: none;
+        border: none;
+        border-radius: 4px;
+        transition: 0.2s ease-in all;
+    }
+
+    &__paste:hover {
+        @include shadow;
+        cursor: pointer;
+    }
+
     &__submit {
         width: 70%;
         margin: auto;
@@ -206,7 +219,9 @@ const isPrivate = ref(false);
         gap: 1rem;
     }
 
-    &__clickable {}
+    &__clickable {
+        
+    }
 }
 
 .inputs {

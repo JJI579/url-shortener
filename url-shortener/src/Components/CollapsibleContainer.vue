@@ -75,7 +75,7 @@ function toggleContainer() {
     overflow: hidden;
 
     &__collapsible {
-        background-color: #dadada;
+        background-color: $secondary-background-colour;
         padding: 1rem;
         cursor: pointer;
 
